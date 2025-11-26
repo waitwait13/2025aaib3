@@ -1,0 +1,18 @@
+// week12_3.cpp 學習計畫 Math 第4題
+// LeetCode 976. Largest Perimeter Triangle
+// 要用 nums 裡的棒子長度 組合出三角形兩邊和>第三邊
+class Solution {
+public:
+    int largestPerimeter(vector<int>& nums) {
+        sort(nums.begin(),nums.end()); // 排序(又快又好)
+        //for(int i=nums.size()-1;i>=0;i--){
+            //倒過來的迴圈
+            // cout <, num[i] << " "; //印出大到小的數
+        //} // 先印出大到小 等一下 這3行刪掉(可留下上面3行的註解 可理解反過來迴圈)
+        for(int i=nums.size()-1;i>=2;i--){ // 迴圈有稍修改 nums[i] vs. -1,-2
+            if(nums[i] < nums[i-1] + nums[i-2]) return nums[i]+nums[i-1]+nums[i-2];
+            // 如果順利兩邊和大於第三邊 就把我們的長度加起來當成答案
+        }
+        return 0; // 找不到任何合法的三角形 就return 0
+    }
+};
